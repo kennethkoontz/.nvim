@@ -1,12 +1,9 @@
 return {
+	{ "tjdevries/colorbuddy.nvim", branch = "dev" },
 	{
-		"maxmx03/solarized.nvim",
-		lazy = false,
-		priority = 1000,
+		"jesseleite/nvim-noirbuddy",
 		config = function()
-			vim.o.background = "dark" -- or 'light'
-
-			vim.cmd.colorscheme("solarized")
+			require("noirbuddy").setup()
 		end,
 	},
 }

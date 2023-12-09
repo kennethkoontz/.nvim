@@ -26,3 +26,5 @@ vim.opt.scrolloff = 999
 
 require("lazy").setup("plugins")
 require("keymaps")
+
+vim.cmd.highlight({ "VertSplit", "guibg=#121212 guifg=#121212" })
