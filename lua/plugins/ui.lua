@@ -33,6 +33,15 @@ return {
 		-- or                              , branch = '0.1.x',
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			require("telescope").setup({
+				defaults = {
+					layout_config = {
+						prompt_position = "top",
+					},
+					sorting_strategy = "ascending",
+				},
+			})
+
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>ff", builtin.live_grep, {})
