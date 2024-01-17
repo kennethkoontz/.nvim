@@ -14,6 +14,9 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]])
+			vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
+
 			local lspconfig = require("lspconfig")
 			lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({
@@ -28,16 +31,34 @@ return {
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
-			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, { desc = "Open floating diagnostics menu" })
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+
+			vim.diagnostic.config({
+				virtual_text = false,
+				underline = true,
+				float = {
+					header = false,
+					border = "rounded",
+					focusable = true,
+				},
+			})
 
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
 					-- Enable completion triggered by <c-x><c-o>
 					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+					vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+						border = "single",
+					})
+
+					vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+						border = "single",
+					})
 
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -69,8 +90,8 @@ return {
 			local cmp = require("cmp")
 			cmp.setup({
 				window = {
-					-- completion = cmp.config.window.bordered(),
-					-- documentation = cmp.config.window.bordered(),
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
 				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-Space>"] = cmp.mapping.complete(),
