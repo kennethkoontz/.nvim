@@ -78,6 +78,7 @@ return {
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
+				ensure_installed = { "lua", "graphql", "typescript", "tsx", "css", "python" },
 				highlight = { enable = true },
 				indent = { enable = true },
 			})
@@ -109,4 +110,23 @@ return {
 			})
 		end,
 	},
+	{
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+			})
+		end,
+	},
+  {
+    "themaxmarchuk/tailwindcss-colors.nvim",
+    -- load only on require("tailwindcss-colors")
+    module = "tailwindcss-colors",
+    -- run the setup function after plugin is loaded 
+    config = function ()
+    -- pass config options here (or nothing to use defaults)
+      require("tailwindcss-colors").setup()
+    end
+  }
 }

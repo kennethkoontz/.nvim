@@ -29,6 +29,11 @@ return {
 				end,
 			})
 			lspconfig.pyright.setup({})
+			lspconfig.tailwindcss.setup({
+				on_attach = function(client, bufnr)
+					require("tailwindcss-colors").buf_attach(bufnr)
+				end,
+			})
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
