@@ -22,7 +22,7 @@ vim.opt.expandtab = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
-vim.opt.scrolloff = 999
+vim.opt.scrolloff = 10
 
 require("lazy").setup("plugins")
 require("keymaps")

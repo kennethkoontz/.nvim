@@ -97,6 +97,7 @@ return {
 					typescript = { "prettier" },
 					typescriptreact = { "prettier" },
 					htmldjango = { "djlint" },
+					graphql = { "prettier" },
 				},
 			})
 

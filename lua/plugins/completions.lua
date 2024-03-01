@@ -7,7 +7,7 @@ return {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "tsserver", "eslint", "pyright" },
+				ensure_installed = { "graphql", "tsserver", "eslint", "pyright" },
 			})
 		end,
 	},
@@ -18,6 +18,7 @@ return {
 			vim.cmd([[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
 
 			local lspconfig = require("lspconfig")
+			lspconfig.graphql.setup({})
 			lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({
 				on_attach = function(client, bufnr)
