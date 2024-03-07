@@ -7,7 +7,7 @@ return {
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "graphql", "tsserver", "eslint", "pyright" },
+				ensure_installed = { "graphql", "tsserver", "eslint", "pyright", "prismals" },
 			})
 		end,
 	},
@@ -34,6 +34,7 @@ return {
 					require("tailwindcss-colors").buf_attach(bufnr)
 				end,
 			})
+			lspconfig.prismals.setup({})
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions

@@ -40,11 +40,12 @@ return {
 			})
 
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>p", builtin.find_files, {})
-			vim.keymap.set("n", "<leader>ff", builtin.live_grep, {})
-			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+			vim.keymap.set("n", "<leader>p", builtin.find_files, {}, "Find files")
+			vim.keymap.set("n", "<leader>ff", builtin.live_grep, {}, "Live grep")
+			vim.keymap.set("n", "<leader>fb", builtin.buffers, {}, "Find buffers")
+			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {}, "Help")
 			vim.keymap.set("n", "<leader>fm", builtin.marks, {})
+			vim.keymap.set("n", "<leader>fk", builtin.keymaps, {})
 		end,
 	},
 	{
@@ -87,6 +88,7 @@ return {
 			map("n", "<Tab>", "<Cmd>BufferNext<CR>", opts)
 			map("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", opts)
 			map("n", "<Leader>fx", "<Cmd>BufferClose<CR>", opts)
+			map("n", "<Leader>fa", "<Cmd>BufferCloseAllButCurrentOrPinned<CR>", opts)
 		end,
 		opts = {
 			auto_hide = 1,
