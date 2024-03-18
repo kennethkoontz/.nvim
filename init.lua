@@ -23,6 +23,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 10
+vim.opt.clipboard = "unnamedplus"
 
 require("lazy").setup("plugins")
 require("keymaps")
