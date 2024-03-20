@@ -100,11 +100,12 @@ return {
 					-- Conform will run multiple formatters sequentially
 					python = { "isort", "black" },
 					-- Use a sub-list to run only the first available formatter
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					typescriptreact = { "prettier" },
-					htmldjango = { "djlint" },
-					graphql = { "prettier" },
+					javascript = { { "prettierd", "prettier" } },
+					typescript = { { "prettierd", "prettier" } },
+					typescriptreact = { { "prettierd", "prettier" } },
+					htmldjango = { { "djlint" } },
+					graphql = { { "prettierd", "prettier" } },
+					json = { { "prettierd", "prettier" } },
 				},
 			})
 
@@ -122,6 +123,14 @@ return {
 			-- add any options here
 		},
 		lazy = false,
+		config = function()
+			require("Comment").setup({
+				pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+			})
+		end,
+	},
+	{
+		"JoosepAlviste/nvim-ts-context-commentstring",
 	},
 	-- {
 	-- 	"rmagatti/auto-session",
@@ -142,4 +151,9 @@ return {
 			require("tailwindcss-colors").setup()
 		end,
 	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	opts = {},
+	-- },
 }

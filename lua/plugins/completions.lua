@@ -19,7 +19,7 @@ return {
 
 			local lspconfig = require("lspconfig")
 			lspconfig.graphql.setup({})
-			lspconfig.tsserver.setup({})
+			-- lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({
 				on_attach = function(client, bufnr)
 					vim.api.nvim_create_autocmd("BufWritePre", {
@@ -90,6 +90,11 @@ return {
 				end,
 			})
 		end,
+	},
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 	{
 		"hrsh7th/nvim-cmp",

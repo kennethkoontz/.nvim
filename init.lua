@@ -25,6 +25,11 @@ vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 10
 vim.opt.clipboard = "unnamedplus"
 
+-- for ts comments
+vim.g.skip_ts_context_commentstring_module = true
+
+-- vim.cmd("hi LineNr guibg=none")
+
 require("lazy").setup("plugins")
 require("keymaps")
 
